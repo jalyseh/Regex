@@ -1,7 +1,9 @@
+import com.sun.org.apache.xpath.internal.operations.String;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -11,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         testMatches();
+        testMatches2();
     }
 
     public static void testMatches(){
@@ -21,9 +24,9 @@ public class Main {
         System.out.println(Arrays.asList("Anne of the 100 days".split(".")));
 
         //replace
-        String string = "x and tigers and bears, oh my!";
-        String replaced = string.replaceAll("q","Lions");
-        System.out.println(string == replaced);
+//        String string = "x and tigers and bears, oh my!";
+//        String replaced = string.replaceAll("q","Lions");
+//        System.out.println(string == replaced);
     }
 
 //    public static void display(Pattern pattern, String group){
@@ -37,17 +40,16 @@ public class Main {
 //        }
 //    }
 
-
-    @Test
-    public void testPatternSplit(){
-        Pattern pattern = Pattern.compile(",");
-        String[] split = pattern.split("12,34,56,78");
-        System.out.println(Arrays.asList(split));
+//    @Test
+//    public void testPatternSplit(){
+//        Pattern pattern = Pattern.compile(",");
+//        String[] split = pattern.split("12,34,56,78");
+//        System.out.println(Arrays.asList(split));
 
         //matcher
 //        Pattern pattern2 = Pattern.compile(",");
 //        Matcher matcher = pattern.matcher("12,34,56,78");
-    }
+//    }
 
     @Test
     public void validateMasterCardNumber(){
@@ -78,4 +80,30 @@ public class Main {
         "I favor the numbers \"22\" and 34".replaceFirst("\\d","4");
     }
 
+//    @Test
+//    public void testReplaceAllWithReferences(){
+//        List<String> list = Arrays.stream(new String[]{
+//
+//                "securities-development-equities-valuation-americas",
+//                "securities-development-equities-valuation-americas",
+//                "fixed_income-development-equities-asia",
+//                "fix-development-emea"}).map(
+//                        label -> label
+//        )
+//        })
+//    }
+//    @Test
+//    public void testUnicodeCase(){
+//        String regex = "\u00E0";
+//        String text = "\u00C0";
+//
+//        System.out.println("regex: %s, text: %s%n", regex, text);
+//        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS);
+//    }
+
+    @Test
+    public static void testMatches2(){
+        boolean matches = Pattern.matches("[\\w\\s]+", "She sells seashells");
+        System.out.println(matches);
+    }
 }
